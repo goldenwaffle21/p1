@@ -48,7 +48,7 @@ namespace PizzaBox.Client.Models
         [Range(0,250, ErrorMessage = "Price cannot exceed $250 for a single order")]
         public decimal TotalPrice {get;set;}
 
-        [Required]
+        [Required(ErrorMessage = "Customer name is required")]
         public string UserName {get;set;}
 
         public string Address {get;set;}
@@ -65,6 +65,9 @@ namespace PizzaBox.Client.Models
             Sizes = new List<string>{"Small","Medium","Large"};
             Crusts = new List<string>{"Regular","Deep Dish","Stuffed","Thin"};
             Sauces = new List<string>{"Alfredo","Pesto","Tomato"};
+
+            //sessionStorage exists only in the browser; it can only be accessed through View.
+            //Store the current user (or lack thereof) in the context instead
             if (sessionStorage.getItem("user") != null)
             {
                 User user = _repo.Get<User>().FirstOrDefault(u => u.Id == sessionStorage.getItem("user"));

@@ -1,3 +1,7 @@
+//This script isn't responsible for generating or storing data; merely for generating elements in 
+//the form for the user to fill in. (Well, it does prefill the toppings, so that's kind of
+//generating data).
+
 var pizza;
 var custom;
 var cheese;
