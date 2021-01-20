@@ -8,16 +8,27 @@ namespace PizzaBox.Client.Models
 {
     public class OrderViewModel
     {
+        //purely output
         public List<Store> Stores {get;set;}
+        public List<Pizza> Pizzas {get;set;}
         public List<string> Bases {get;set;}
         public List<string> Sizes {get;set;}
         public List<string> Crusts {get;set;}
-        public bool GlutenFree {get;set;}
         public List<string> Sauces {get;set;}
         public List<string> CurrentToppings {get;set;}
 
         [Required(ErrorMessage = "You must select a store")]
         public string Store {get;set;}
+
+        public int NumberOfUniquePizzas {get;set;}
+
+        //note: maybe go back through and make names plural
+        public List<string> Base {get;set;}
+        public List<string> Size {get;set;}
+        public List<string> Crust {get;set;}
+        public string GlutenFree {get;set;}
+        public List<string> Sauce {get;set;}
+        public Array<List<string>> Toppings {get;set;}
 
         [Required]
         [Range(2,50, ErrorMessage = "You must order at least 2 and no more than 50 pizzas")]
@@ -26,9 +37,6 @@ namespace PizzaBox.Client.Models
         [Required]
         [Range(0,250, ErrorMessage = "Price cannot exceed $250 for a single order")]
         public decimal TotalPrice {get;set;}
-
-        public List<Pizza> Pizzas {get;set;}
-        //Requirements handled inside the Pizza model
 
         [Required]
         public string UserName {get;set;}

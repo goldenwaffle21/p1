@@ -49,11 +49,32 @@ namespace PizzaBox.Client.Controllers
                 {
                     DateModified = DateTime.Now,
                     Store = _repo.Get<Store>().FirstOrDefault(s => s.Name == model.Store),
-                    Pizzas = model.Pizzas,
+                    Pizzas = new List<Pizza>(){},
                     NumberOfPizzas = model.NumberOfPizzas,
                     TotalPrice = model.TotalPrice,
                     Status = "not yet delivered"
                 };
+                for (int i = 1; i <= model.NumberOfUniquePizzas; i++)
+                {
+                    Pizza pizza = new Pizza()
+                    {
+                        Base = model.Base[i],
+                        Size = model.Size[i],
+                        Crust = model.Crust[i],
+                        Sauce = model.Sauce[i],
+                        Toppings = model.Toppings[i],
+                        Price = model.Price[i]
+                    };
+                    if (model.GlutenFree[i] == "glutenfree")
+                    {
+                        GlutenFree[i] = true;
+                    }
+                    for (int j = 0; j <= model.Quantity[i]; j++)
+                    {
+                        if (j==0) {continue;}
+                        order.Pizzas.Add(pizza);
+                    }
+                }
 
                 User user;
                 if (_repo.Get<User>().FirstOrDefault(u => u.Name == model.UserName) != null)

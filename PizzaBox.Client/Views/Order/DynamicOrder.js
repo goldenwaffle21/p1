@@ -36,6 +36,7 @@ function addPizzaListeners()
     remove.forEach(item => {addRemoveListener(item)});
     quantities.forEach(item => {addQuantityListener(item)})
     prices.forEach(item => {addPriceListener(item)});
+    document.getElementById("numberofuniquepizzas").value = pizzas.Length;
     calculateTotalPizzaNumber();
     calculateTotalPrice();
 }
@@ -232,6 +233,7 @@ function addRemoveListener(item)
             pizza = item.parentElement;
             remove(pizza);
             pizzas = document.querySelectorAll("section[name=pizzas]");
+            document.getElementById("numberofuniquepizzas").value = pizzas.Length;
             recalculatePizzaNumbers();
             calculateTotalPizzaNumber();
         });
@@ -339,13 +341,10 @@ function removeAllChildNodes(parent)
 function recalculatePizzaNumbers()
 {
     var i = 1;
-    var total;
     pizzas.forEach(element => {
         element.id = "pizza"+i;
         element.querySelector("h4").innerHTML = "Pizza #"+i;
-        i++;
-        total++;
-        
+        i++;   
     });
 }
 
