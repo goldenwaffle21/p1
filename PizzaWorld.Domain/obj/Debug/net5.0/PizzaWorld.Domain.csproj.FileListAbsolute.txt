@@ -1,0 +1,12 @@
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/bin/Debug/net5.0/PizzaWorld.Domain.deps.json
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/bin/Debug/net5.0/PizzaWorld.Domain.dll
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/bin/Debug/net5.0/ref/PizzaWorld.Domain.dll
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/bin/Debug/net5.0/PizzaWorld.Domain.pdb
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.csprojAssemblyReference.cache
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.AssemblyInfoInputs.cache
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.AssemblyInfo.cs
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.csproj.CoreCompileInputs.cache
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.dll
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/ref/PizzaWorld.Domain.dll
+/home/elliot/revature/projects/p0/PizzaWorld.Domain/obj/Debug/net5.0/PizzaWorld.Domain.pdb

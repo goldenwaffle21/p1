@@ -1,0 +1,11 @@
+@model PizzaBox.Client.Models.CustomerViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Congrajulations! Order successfully placed!</h1>
+<h2>Thank you for your patronage, @Model.User.Name!</h2>
+<form asp-action="Home" asp-controller="Customer" method="GET">
+    <button type="submit">Customer Home</button>
+</form>

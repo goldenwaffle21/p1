@@ -1,0 +1,24 @@
+@*weak-typed view. No way to know type*@
+@*
+<ul>
+    @foreach (var store in ViewBag.Stores)
+    {
+        <li>@store</li>
+    }
+</ul>
+*@
+
+@* strong-typed view*@
+
+@model PizzaBox.Client.Models.StoreViewModel    //only allows a model of this type into the view.
+
+@{
+    Layout = "_Layout";
+}
+
+<ul>
+    @foreach (var store in Model.Stores)
+    {
+        <li>@store</li>
+    }
+</ul>

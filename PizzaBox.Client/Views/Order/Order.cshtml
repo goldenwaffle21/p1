@@ -1,0 +1,188 @@
+@model PizzaBox.Client.Models.OrderViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+@* Read about:
+CSRF (cross site request forgery)
+html helpers
+tag helpers
+*@
+
+@* html way *@
+@*
+<form action="/order/post" method="POST">
+    @Html.AntiForgeryToken();
+    @foreach (var item in Model.Stores)
+    {
+        <input type="radio" name="store" id="@item.Name" value="@item.Name" asp-validation>
+        <label for="@item.Name">@item.Name</label>
+    }
+</form>
+*@
+
+@* html helper way *@
+@*
+@using (@Html.BeginForm("post", "order", null, FormMethod.post))
+{
+    @Html.AntiForgeryToken()
+
+    @foreach (var item in Model.Stores)
+    {
+        @Html.RadioButtonFor(m => m.Store, item.Name)
+        @Html.LabelFor(m => m.Store, item.Name)
+        @Html.ValidationMessageFor(m => m.Store)
+    }
+    }
+*@
+
+@* tag helper way *@
+<form asp-action="post" asp-controller="order" method="POST" asp-antiforgery="true">
+    <h3>Pick a Store</h3>
+    @foreach (var store in Model.Stores)
+    {
+        if (store == Model.Store)
+        {
+            <input type="radio" asp-for="@Model.Stores" name="store" value="@store" asp-validation checked />
+        }
+        else
+        {
+            <input type="radio" asp-for="@Model.Stores" name="store" value="@store" asp-validation />
+        }
+        <label for="@store">@store</label>
+    }
+
+    <h3>Pick Pizzas</h3>
+    @for (int i=1;i<=Model.Pizzas.Length;i++)
+    {
+        var pizza = Model.Pizzas[i-1];
+        <section name="pizzas" id="pizza@i">
+            <h4>Pizza #@i</h4>
+
+            <input type="hidden" id="number" value="@i" />
+            
+            <h5>Base</h5>
+            foreach (var Base in Model.Bases)
+            {
+                if (Base == pizza.Base)
+                {
+                    <input type="radio" class="base" name="base[@i]" id="@Base" value="@Base" checked />    <!--default-->
+                    <label for="@Base">@Base</label>
+                }
+                else
+                {
+                    <input type="radio" class="base" name="base[@i]" id="@Base" value="@Base" />
+                    <label for="@Base">@Base</label>
+                }
+            }
+            
+            <h5>Size</h5>
+            foreach (var size in Model.Sizes)
+            {
+                if (size == pizza.Size)
+                {
+                    <input type="radio" class="size" name="size[@i]" id="@size" value="@size" required checked />    <!--default-->
+                    <label for="@size">@size</label>
+                }
+                else
+                {
+                    <input type="radio" class="size" name="size[@i]" id="@size" value="@size" required />
+                    <label for="@size">@size</label>
+                }
+            }
+
+            <h5>Crust</h5>
+            foreach (var crust in Model.Crusts)
+            {
+                if (crust == pizza.Crust)
+                {
+                    <input type="radio" class="crust" name="crust[@i]" id="@crust" value="@crust" required checked />    <!--default-->
+                    <label for="@crust">@crust</label>
+                }
+                else
+                {
+                    <input type="radio" class="crust" name="crust[@i]" id="@crust" value="@crust" required />
+                    <label for="@crust">@crust</label>
+                }
+            }
+            if (pizza.GlutenFree)
+            {
+                <input type="checkbox" class="glutenfree" name="glutenfree[@i]" id="glutenfree" value="glutenfree" checked />
+                <label for="glutenfree">gluten free</label>
+            }
+            else
+            {
+                <input type="checkbox" class="glutenfree" name="glutenfree[@i]" id="glutenfree" value="glutenfree" />
+                <label for="glutenfree">gluten free</label>
+            }
+            
+            <h5>Sauce</h5>
+            foreach (var sauce in Model.Sauces)
+            {
+                if (sauce == pizza.Sauce)
+                {
+                    <input type="radio" class="sauce" name="sauce[@i]" id="@sauce" value="@sauce" required checked />    <!--default-->
+                    <label for="@sauce">@sauce</label>
+                }
+                else
+                {
+                    <input type="radio" class="sauce" name="sauce[@i]" id="@sauce" value="@sauce" required />
+                    <label for="@sauce">@sauce</label>
+                }
+            }
+            
+            <!--Display toppings-->
+            <section id="currenttoppings">
+                <h5>Toppings</h5>
+                if (pizza.Toppings.Length == 0)
+                {
+                    <input type="checkbox" class="toppings" name="toppings[@i]" id="cheese" value="cheese" />
+                    <label for="cheese">cheese</label>
+                    //Cheese included as a reminder, but unchecked
+                }
+                else
+                {
+                    foreach (var topping in pizza.Toppings)
+                    {
+                        <input type="checkbox" class="toppings" name="toppings[@i]" id="@topping.Name" value="@topping.Name" checked />
+                        <label for="@topping.Name">@topping.Name</label>
+                    }
+                }
+            </section>
+            
+            <!--input toppings-->
+            <input id="newtoppinginput" />
+            <button name="addtopping">Add Topping!</button>
+
+            <h5>Quantity</h5>
+            <label for="quantity">How many of this pizza would you like?</label>
+            <input type="number" class="quantity" name="quantity[@i]" min="1" max="15" value="@pizza.Quantity" required />
+
+            <label for="price">Price: $</label>
+            <input type="number" class="price" name="price[@i]" id="price" step="0.01" value="@pizza.Price" readonly />
+
+            <button class="removepizza">Remove Pizza</button>
+        </section>
+    }
+    
+
+    <button name="addpizza">Add A New Pizza</button>
+
+    <label for="numberofpizzas">Total Number of Pizzas: </label>
+    <input type="number" name="numberofpizzas" id="numberofpizzas" value="@Model.Pizzas.Length" readonly />
+
+    <label for="totalprice">Total Price: $</label>
+    <input type="number" name="totalprice" id="totalprice" readonly />
+    <!--Calculated with JS when the page first loads and after any change to the pizza prices-->
+
+    <label for="username">Name</label>
+    <input name="username" id="username" required />
+
+    <label for="address">Delivery Address (optional)</label>
+    <input name="address" id="address" />
+        
+    <button type="submit">Place Order</button>
+    <button type="reset">Cancel Order</button>
+</form>
+<script src="DynamicOrder.js"></script>

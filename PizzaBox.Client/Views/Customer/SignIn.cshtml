@@ -1,0 +1,46 @@
+@model PizzaBox.Client.Models.SignInViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<form asp-action="post" asp-controller="customer" method="POST" asp-antiforgery="true">
+    @foreach (var user in Model.Users)
+    {
+        if (user = Model.User)
+        {
+            <input type="radio" asp-for="@Model.Users" name="user" value="@user" asp-validation checked />
+        }
+        else
+        {
+            <input type="radio" asp-for="@Model.Users" name="user" value="@user" asp-validation />
+        }
+        <label for="user">@user.Name</label>
+    }
+
+    <button id="shownewuser" hidden="false">New User</button>
+
+    <section id="newuser" hidden>
+        <h2>New User</h2>
+        <label for="username">Name</label>
+        @if (Model.User != null)
+        {
+            <input name="username" id="username" value="@Model.User.Name" />
+        }
+        else
+        {
+            <input name="username" id="username" />
+        }
+        <label for="address">Delivery Address (optional)</label>
+        <input name="address" id="address" />
+    </section>
+
+    <script>
+        document.getElementById("shownewuser").addEventListener('click', function()
+            {
+                document.getElementById("newuser").hidden = false;
+                document.getElementById("shownewuser").hidden = true;
+            }
+        );
+    </script>
+</form>

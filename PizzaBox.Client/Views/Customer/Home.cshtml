@@ -1,0 +1,54 @@
+@model PizzaBox.Client.Models.CustomerViewModel
+
+@{
+    ViewBag.Title = "Customer - Home";
+    Layout = "_Layout";
+}
+
+<h1>Welcome, @Model.User.Name</h1>
+
+<section>
+    <h1>Previous Orders</h1>
+
+    <button id="previousordersbutton">View Previous Orders</button>
+    
+    <table id="previousorderstable" hidden>
+        <tr>
+            <th>ID</th> <th>Date Placed</th> <th>Content</th> <th>Status</th> <th>View/Modify Order</th> <th>Cancel Order</th>
+        </tr>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.DateModified</td>
+                <td>@order.NumberOfPizzas Pizzas, $@order.TotalPrice</td>
+                <td>@order.Status</td>
+                <td>
+                    <a action="/order/put" method="PUT">View/Modify</a>
+                </td>
+                <td>
+                    <a action="/order/delete" method="DELETE">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    
+    <button id="hidepreviousorders" hidden>Hide Previous Orders</button>
+
+    <script>
+        document.getElementById("previousordersbutton").addEventListener('click', function()
+            {
+                document.getElementById("previousordersbutton").hidden = true;
+                document.getElementById("previousorderstable").hidden = false;
+                document.getElementById("hidepreviousorders").hidden = false;
+            }
+        document.getElementById("hidepreviousorders").addEventListener('click', function()
+            {
+                document.getElementById("previousordersbutton").hidden = false;
+                document.getElementById("previousorderstable").hidden = true;
+                document.getElementById("hidepreviousorders").hidden = true;
+            }
+    </script>
+</section>
+
+@Html.Partial("Order", new OrderViewModel())

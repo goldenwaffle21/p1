@@ -1,0 +1,8 @@
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.csprojAssemblyReference.cache
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.GeneratedMSBuildEditorConfig.editorconfig
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.AssemblyInfoInputs.cache
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.AssemblyInfo.cs
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.csproj.CoreCompileInputs.cache
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.MvcApplicationPartsAssemblyInfo.cache
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.RazorAssemblyInfo.cache
+/home/elliot/revature/projects/p1/PizzaBox.Client/obj/Debug/net5.0/PizzaBox.Client.RazorAssemblyInfo.cs
