@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using PizzaBox.Client.Models;
-using PizzaBox.Client.Views;
 using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models;
 using PizzaBox.Storing;
@@ -27,7 +26,7 @@ namespace PizzaBox.Client.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return View("Order", new OrderViewModel());
+            return View("Order", new OrderViewModel(_repo));
         }
 
         //View an old order; requires authorization.
@@ -35,51 +34,50 @@ namespace PizzaBox.Client.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(string orderid)
         {
-            order = _repo.Get<Order>().FirstOrDefault(o => o.Id == orderid);
-            return View("Order", new OrderViewModel(order));
+            Order order = _repo.Get<Order>().FirstOrDefault(o => o.Id == orderid);
+            return View("Order", new OrderViewModel(_repo, order));
         }
         
         //Creating an order does not require authorization.
         [HttpPost]
-        [ValidateAntiforgeryToken]
+        //[ValidateAntiforgeryToken]
         public IActionResult Order(OrderViewModel model)
         {
             if (ModelState.IsValid)    //validate user input
             {
                 var order = new Order()
                 {
-                    DateModified = DateTime.Now;
-                    Store = _repo.Get<Store>().FirstOrDefault(s => s.Name == model.Store);
-                    User = model.User;
-                    Pizzas = model.Pizzas;
-                    NumberOfPizzas = model.NumberOfPizzas;
-                    TotalPrice = model.TotalPrice;
-                    Status = "not yet delivered";
+                    DateModified = DateTime.Now,
+                    Store = _repo.Get<Store>().FirstOrDefault(s => s.Name == model.Store),
+                    Pizzas = model.Pizzas,
+                    NumberOfPizzas = model.NumberOfPizzas,
+                    TotalPrice = model.TotalPrice,
+                    Status = "not yet delivered"
                 };
 
-                var user;
+                User user;
                 if (_repo.Get<User>().FirstOrDefault(u => u.Name == model.UserName) != null)
                 {
                     order.User = _repo.Get<User>().FirstOrDefault(u => u.Name == model.UserName);
                     user = order.User;
-                    user.Orders.Add(order)
-                    _repo.Update(user)
+                    user.Orders.Add(order);
+                    _repo.Update(user);
                 }
                 else
                 {
                     user = new User()
                     {
-                        Name = model.UserName;
-                        Address = model.Address;
-                        Orders.Add(order)
-                        SelectedStore = model.Store;
+                        Name = model.UserName,
+                        Address = model.Address,
+                        SelectedStore = _repo.Get<Store>().FirstOrDefault(o => o.Name == model.Store)
                     };
+                    user.Orders.Add(order);
                     order.User = user;
-                    _repo.Add(user)
+                    _repo.Add(user);
                 }
-                sessionStorage.setItem("user",user.Id);
+                sessionStorage.setItem(user,user.Id);
 
-                return View("OrderPlaced", new UserViewModel(order.User));
+                return View("OrderPlaced", new CustomerViewModel(order.User));
             }
             return View("Order", model);
         }
@@ -89,8 +87,8 @@ namespace PizzaBox.Client.Controllers
         [HttpPut]
         public IActionResult Put(string orderid)
         {
-            order = _repo.Get<Order>().FirstOrDefault(o => o.Id == orderid);
-            return View("Order", new OrderViewModel(order));
+            Order order = _repo.Get<Order>().FirstOrDefault(o => o.Id == orderid);
+            return View("Order", new OrderViewModel(_repo, order));
         }
 
         //Deliver order
@@ -98,7 +96,7 @@ namespace PizzaBox.Client.Controllers
         [HttpPut]
         public void Deliver(string orderid)
         {
-            order = _repo.Get<Order>().FirstOrDefault(o => o.Id == orderid);
+            Order order = _repo.Get<Order>().FirstOrDefault(o => o.Id == orderid);
             order.Status = "delivered";
         }
 

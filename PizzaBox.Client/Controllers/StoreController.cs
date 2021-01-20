@@ -34,7 +34,7 @@ namespace PizzaBox.Client.Controllers
         [HttpGet("{store}")]    //http://localhost:5000/store/<specifier for individual store>
         public IActionResult Get(string store)    //Get current store.
         {
-            return View("Store", store, new StoreViewModel);
+            return View("Store", new StoreViewModel(store));
         }
 
         //public void Post() {}

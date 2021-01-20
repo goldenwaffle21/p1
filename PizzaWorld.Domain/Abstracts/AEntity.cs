@@ -4,7 +4,7 @@ namespace PizzaBox.Domain.Abstracts
 {
     public abstract class AEntity
     {
-        public long Id {get;set;}
+        public string Id {get;set;}
         /*protected AEntity()
         {
             Id = DateTime.Now.Ticks;

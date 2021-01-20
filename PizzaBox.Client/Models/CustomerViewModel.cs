@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using PizzaBox.Domain.Models;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaBox.Client.Models
 {

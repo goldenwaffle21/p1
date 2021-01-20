@@ -13,16 +13,15 @@ namespace PizzaWorld.Testing
         }
 
         [Fact]
-        public void Test_HomeWithValidId()
+        public void Test_CustomControllerExists()
         {
             //Given
-            var userid = _repo.Get<user>().Last().Id;
+            var sut = new CustomerController();
             
             //When
             sessionStorage.setItem("user",userid);    //does this work?
 
             //Then
-            CustomerController
         }
     }
 }

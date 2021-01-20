@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PizzaWorld.Storing;
+using PizzaBox.Storing;
 
-namespace PizzaWorld.Storing.Migrations
+namespace PizzaBox.Storing.Migrations
 {
-    [DbContext(typeof(PizzaWorldContext))]
-    partial class PizzaWorldContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PizzaBoxContext))]
+    partial class PizzaBoxContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace PizzaWorld.Storing.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("PizzaWorld.Domain.Abstracts.APizzaModel", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Abstracts.APizzaModel", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("APizzaModel");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.Order", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,7 +74,7 @@ namespace PizzaWorld.Storing.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.Store", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.Store", b =>
                 {
                     b.Property<long>("Id")
                         .HasColumnType("bigint");
@@ -99,7 +99,7 @@ namespace PizzaWorld.Storing.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.Topping", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.Topping", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,7 +114,7 @@ namespace PizzaWorld.Storing.Migrations
                     b.ToTable("Topping");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.User", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -129,30 +129,30 @@ namespace PizzaWorld.Storing.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.CheesePizza", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.CheesePizza", b =>
                 {
-                    b.HasBaseType("PizzaWorld.Domain.Abstracts.APizzaModel");
+                    b.HasBaseType("PizzaBox.Domain.Abstracts.APizzaModel");
 
                     b.HasDiscriminator().HasValue("CheesePizza");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.Order", b =>
                 {
-                    b.HasOne("PizzaWorld.Domain.Models.Store", null)
+                    b.HasOne("PizzaBox.Domain.Models.Store", null)
                         .WithMany("Orders")
                         .HasForeignKey("StoreId");
 
-                    b.HasOne("PizzaWorld.Domain.Models.User", null)
+                    b.HasOne("PizzaBox.Domain.Models.User", null)
                         .WithMany("Orders")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.Store", b =>
+            modelBuilder.Entity("PizzaBox.Domain.Models.Store", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.User", b =>
+            modelBuilder.Entity("PizzaWorl.Domain.Models.User", b =>
                 {
                     b.Navigation("Orders");
                 });

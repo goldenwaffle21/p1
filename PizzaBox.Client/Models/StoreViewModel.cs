@@ -3,17 +3,20 @@ using System.Collections.Generic;
 
 namespace PizzaBox.Client.Models
 {
-    public List<Store> Stores {get;set;}
-    
-    public StoreViewModel()
+    public class StoreViewModel
     {
-        Stores = new List<>{};
-        //Pull all stores from database and add to Stores.
-    }
+        public List<string> Stores {get;set;}
+        
+        public StoreViewModel()
+        {
+            Stores = new List<string>{};
+            //Pull all stores from database and add to Stores.
+        }
 
-    public StoreViewModel(string store)
-    {
-        Stores = new List<>{};
-        //single store
+        public StoreViewModel(string store)
+        {
+            Stores = new List<string>{store};
+            //single store
+        }
     }
 }

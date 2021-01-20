@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using PizzaBox.Client.Models;
+using PizzaBox.Domain.Models;
+using PizzaBox.Storing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PizzaBox.Client.Models;
+
 
 namespace PizzaBox.Client.Controllers
 {
@@ -30,44 +34,47 @@ namespace PizzaBox.Client.Controllers
             }
             else
             {
-                sessionStorage.setItem("user",null)
-                return View("SignIn", new SignInViewModel());
+                sessionStorage.setItem("user",null);
+                return View("SignIn", new SignInViewModel(_repo));
             }
         }
 
         [HttpGet]
         public IActionResult SignIn()
         {
-            sessionStorage.setItem("user",null)
-            return View("SignIn", new SignInViewModel());
+            sessionStorage.setItem("user",null);
+            return View("SignIn", new SignInViewModel(_repo));
 
         }
 
         //Explicit Sign In
         [HttpPost]
-        [ValidateAntiforgeryToken]
+        //[ValidateAntiforgeryToken]
         public IActionResult Post(SignInViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (model.User != null)
+                User user;
+                if (model.User != "")
                 {
-                    sessionStorage.setItem("user",model.User.Id);
+                    user = _repo.Get<User>().FirstOrDefault(u => u.Name == model.User);
+                    sessionStorage.setItem("user",user.Id);
                 }
                 else
                 {
-                    var user = new User()
+                    user = new User()
                     {
-                        Name = model.UserName;
-                        Address = model.Address;
-                    }
-                    _repo.Add(user)
+                        Name = model.UserName,
+                        Address = model.Address
+                    };
+                    _repo.Add(user);
                     user = _repo.Get<User>().Last();    //now with auto-generated ID
                     sessionStorage.setItem("user",user.Id);
                 }
 
                 return View("Home", new CustomerViewModel(sessionStorage.getItem("user")));
             }
+            return View("SignIn",model);
         }
     }
 }

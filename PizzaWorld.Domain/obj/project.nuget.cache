@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0nMH2cg8vv/ScevSGpZP/4aqd5ipUblwPXDGsNrTMAmyFBDN/2BASyDB4awmHNHuzLzijhq3+yYiuN4Zt9M/bA==",
+  "dgSpecHash": "9VFJdLVgQrNwCMn/WN291xquyEcgnhWlixyedgX1b5YjmTEdYB/n7KynQwvAAgToXeQziwAChnhb/EIG+w0HVw==",
   "success": true,
-  "projectFilePath": "/home/elliot/revature/projects/p0/PizzaWorld.Domain/PizzaWorld.Domain.csproj",
+  "projectFilePath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

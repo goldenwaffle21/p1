@@ -9,37 +9,41 @@
     {
         if (user = Model.User)
         {
-            <input type="radio" asp-for="@Model.Users" name="user" value="@user" asp-validation checked />
+            <input type="radio" asp-for="@Model.Users" name="user" value="@user.Name" asp-validation checked />
         }
         else
         {
-            <input type="radio" asp-for="@Model.Users" name="user" value="@user" asp-validation />
+            <input type="radio" asp-for="@Model.Users" name="user" value="@user.Name" asp-validation />
         }
         <label for="user">@user.Name</label>
     }
 
-    <button id="shownewuser" hidden="false">New User</button>
+    <input type="radio" asp-for="@Model.Users" name="user" id="shownewuser" value="" asp-validation />
+    <label for="shownewuser">New User</label>
 
     <section id="newuser" hidden>
         <h2>New User</h2>
+
         <label for="username">Name</label>
-        @if (Model.User != null)
-        {
-            <input name="username" id="username" value="@Model.User.Name" />
-        }
-        else
-        {
-            <input name="username" id="username" />
-        }
+        <input name="username" id="username" />
+
         <label for="address">Delivery Address (optional)</label>
         <input name="address" id="address" />
     </section>
 
     <script>
-        document.getElementById("shownewuser").addEventListener('click', function()
+        document.getElementById("shownewuser").addEventListener('change', function()
             {
-                document.getElementById("newuser").hidden = false;
-                document.getElementById("shownewuser").hidden = true;
+                if (document.getElementById("shownewuser").checked)
+                {
+                    document.getElementById("newuser").hidden = false;
+                    document.getElementById("newuser").getElementById("username").required = true;
+                }
+                else
+                {
+                    document.getElementById("newuser").hidden = true;
+                    document.getElementById("newuser").getElementById("username").required = false;
+                }
             }
         );
     </script>

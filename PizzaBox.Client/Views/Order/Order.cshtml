@@ -42,7 +42,7 @@ tag helpers
     <h3>Pick a Store</h3>
     @foreach (var store in Model.Stores)
     {
-        if (store == Model.Store)
+        if (store.Name == Model.Store)
         {
             <input type="radio" asp-for="@Model.Stores" name="store" value="@store" asp-validation checked />
         }

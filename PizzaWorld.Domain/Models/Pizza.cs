@@ -1,6 +1,8 @@
-using PizzaWorld.Domain.Models;
+using PizzaBox.Domain.Abstracts;
+using PizzaBox.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaBox.Domain.Models
 {

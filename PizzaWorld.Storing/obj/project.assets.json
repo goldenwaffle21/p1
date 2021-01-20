@@ -1508,14 +1508,14 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "PizzaWorld.Domain/1.0.0": {
+      "PizzaBox.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
-          "bin/placeholder/PizzaWorld.Domain.dll": {}
+          "bin/placeholder/PizzaBox.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PizzaWorld.Domain.dll": {}
+          "bin/placeholder/PizzaBox.Domain.dll": {}
         }
       }
     }
@@ -5762,15 +5762,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "PizzaWorld.Domain/1.0.0": {
+    "PizzaBox.Domain/1.0.0": {
       "type": "project",
-      "path": "../PizzaWorld.Domain/PizzaWorld.Domain.csproj",
-      "msbuildProject": "../PizzaWorld.Domain/PizzaWorld.Domain.csproj"
+      "path": "../PizzaWorld.Domain/PizzaBox.Domain.csproj",
+      "msbuildProject": "../PizzaWorld.Domain/PizzaBox.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "PizzaWorld.Domain >= 1.0.0",
+      "PizzaBox.Domain >= 1.0.0",
       "microsoft.entityframeworkcore.design >= 5.0.1",
       "microsoft.entityframeworkcore.sqlserver >= 5.0.1"
     ]
@@ -5781,11 +5781,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/elliot/revature/projects/p0/PizzaWorld.Storing/PizzaWorld.Storing.csproj",
-      "projectName": "PizzaWorld.Storing",
-      "projectPath": "/home/elliot/revature/projects/p0/PizzaWorld.Storing/PizzaWorld.Storing.csproj",
+      "projectUniqueName": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj",
+      "projectName": "PizzaBox.Storing",
+      "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj",
       "packagesPath": "/home/elliot/.nuget/packages/",
-      "outputPath": "/home/elliot/revature/projects/p0/PizzaWorld.Storing/obj/",
+      "outputPath": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/elliot/.nuget/NuGet/NuGet.Config"
@@ -5800,8 +5800,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/home/elliot/revature/projects/p0/PizzaWorld.Domain/PizzaWorld.Domain.csproj": {
-              "projectPath": "/home/elliot/revature/projects/p0/PizzaWorld.Domain/PizzaWorld.Domain.csproj"
+            "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj": {
+              "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj"
             }
           }
         }

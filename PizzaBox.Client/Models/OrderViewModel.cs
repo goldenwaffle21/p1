@@ -1,13 +1,14 @@
 using PizzaBox.Domain.Models;
 using PizzaBox.Storing;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace PizzaBox.Client.Models
 {
     public class OrderViewModel
     {
         public List<Store> Stores {get;set;}
-        public List<APizzaModel> Pizzas {get;set;}
         public List<string> Bases {get;set;}
         public List<string> Sizes {get;set;}
         public List<string> Crusts {get;set;}
@@ -35,12 +36,13 @@ namespace PizzaBox.Client.Models
         public string Address {get;set;}
 
 
-        private PizzaBoxRepository _repo = new PizzaBoxRepository();
+        private PizzaBoxRepository _repo;
 
-        public OrderViewModel()
+        public OrderViewModel(PizzaBoxRepository context)
         {
+            _repo = context;
             Stores = _repo.Get<Store>(); //retrieve from database.
-            Pizzas = new List<APizzaModel>{new Pizza(), new Pizza()};
+            Pizzas = new List<Pizza>{new Pizza(), new Pizza()};
             Bases = new List<string>{"Custom","Cheese","Hawaiian","Meat","Pesto"};
             Sizes = new List<string>{"Small","Medium","Large"};
             Crusts = new List<string>{"Regular","Deep Dish","Stuffed","Thin"};
@@ -50,12 +52,13 @@ namespace PizzaBox.Client.Models
                 User user = _repo.Get<User>().FirstOrDefault(u => u.Id == sessionStorage.getItem("user"));
                 UserName = user.Name;
                 Address = user.Address;
-                Store = user.SelectedStore;
+                Store = user.SelectedStore.Name;
             }
         }
 
-        public OrderViewModel(Order order)
+        public OrderViewModel(PizzaBoxRepository context, Order order)
         {
+            _repo = context;
             Stores = _repo.Get<Store>();    //retrieve from database.
             Store = order.Store.Name;
             Pizzas = order.Pizzas;

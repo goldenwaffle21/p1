@@ -8,13 +8,14 @@ namespace PizzaBox.Domain.Models
 {
     public class User : AEntity
     {
-        public User()
-        {
-            Orders = new List<Order>();
-        }
         public List<Order> Orders {get;set;}
-        public Store SelectedStore;
+        public Store SelectedStore {get;set;}
         public string Name {get;set;}
         public string Address {get;set;}
+        
+        public User()
+        {
+            Orders = new List<Order>(){};
+        }
     }
 }

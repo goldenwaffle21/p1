@@ -15,12 +15,13 @@ namespace PizzaBox.Storing
         //Don't need to save Pizzas or Toppings since their content already exists in 
         //the other data.
 
-        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseSqlServer(_configuration.GetConnectionString("sqlserver"));
             //Storing the server string in appsettings.json allows you to isolate it
             //for additional security.
-        }
+        }*/
+        //Now injected automatically
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -30,7 +31,7 @@ namespace PizzaBox.Storing
             builder.Entity<Order>().HasKey(o => o.Id);
             builder.Entity<Topping>().HasKey(t => t.Id);
 
-            builder.Entity<Store>().Property(s => s.Id).ValueGeneratedNever();
+            builder.Entity<Store>().Property(s => s.Id).ValueGeneratedOnAdd();
             builder.Entity<User>().Property(u => u.Id).ValueGeneratedOnAdd();
             builder.Entity<Order>().Property(o => o.Id).ValueGeneratedOnAdd();
 
@@ -41,9 +42,9 @@ namespace PizzaBox.Storing
         {
             builder.Entity<Store>().HasData(new List<Store>
                 {
-                    new Store() {Id = 1, Name = "Washington"}
-                    new Store() {Id = 2, Name = "Florida"},
-                    new Store() {Id = 3, Name = "Texas"}
+                    new Store() {Id = "1", Name = "Washington"},
+                    new Store() {Id = "2", Name = "Florida"},
+                    new Store() {Id = "3", Name = "Texas"}
                 }
             );
         }

@@ -1,26 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using PizzaBox.Client.Models;
+using PizzaBox.Storing;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PizzaBox.Client.Models;
 
 namespace PizzaBox.Client.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly PizzaBoxRepository _repo;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(PizzaBoxRepository context, ILogger<HomeController> logger)
         {
+            _repo = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View("Order", new OrderViewModel());
+            return View("Order", new OrderViewModel(_repo));
         }
 
         public IActionResult Privacy()
