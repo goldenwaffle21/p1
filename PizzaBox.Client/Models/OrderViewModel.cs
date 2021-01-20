@@ -23,12 +23,22 @@ namespace PizzaBox.Client.Models
         public int NumberOfUniquePizzas {get;set;}
 
         //note: maybe go back through and make names plural
+        [Required]
         public List<string> Base {get;set;}
+        [Required]
         public List<string> Size {get;set;}
+        [Required]
         public List<string> Crust {get;set;}
-        public string GlutenFree {get;set;}
+        [Required]
+        public List<string> GlutenFree {get;set;}
+        [Required]
         public List<string> Sauce {get;set;}
-        public Array<List<string>> Toppings {get;set;}
+        [Required]
+        public List<List<string>> Toppings {get;set;}
+        [Required]
+        public List<int> Quantity {get;set;}
+        [Required]
+        public List<decimal> Price {get;set;}
 
         [Required]
         [Range(2,50, ErrorMessage = "You must order at least 2 and no more than 50 pizzas")]

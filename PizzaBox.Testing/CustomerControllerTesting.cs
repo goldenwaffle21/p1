@@ -1,4 +1,5 @@
-using PizzaWorld.Domain.Models;
+using PizzaBox.Client.Controllers;
+using PizzaBox.Domain.Models;
 using Xunit;
 
 namespace PizzaWorld.Testing
@@ -16,12 +17,15 @@ namespace PizzaWorld.Testing
         public void Test_CustomControllerExists()
         {
             //Given
-            var sut = new CustomerController();
+            var sut = new CustomerController(_repo);
             
             //When
-            sessionStorage.setItem("user",userid);    //does this work?
-
+            var sut1 = new CustomerController(_repo);    //memory allocation
+            
             //Then
+            var actual = sut;
+            Assert.IsType<CustomerController>(actual);
+            Assert.NotNull(actual);
         }
     }
 }

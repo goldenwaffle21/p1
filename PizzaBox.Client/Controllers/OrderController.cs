@@ -61,13 +61,13 @@ namespace PizzaBox.Client.Controllers
                         Base = model.Base[i],
                         Size = model.Size[i],
                         Crust = model.Crust[i],
+                        GlutenFree = model.GlutenFree[i],
                         Sauce = model.Sauce[i],
-                        Toppings = model.Toppings[i],
                         Price = model.Price[i]
                     };
-                    if (model.GlutenFree[i] == "glutenfree")
+                    foreach (string topping in model.Toppings[i])
                     {
-                        GlutenFree[i] = true;
+                        pizza.Toppings.Add(new Topping(topping));
                     }
                     for (int j = 0; j <= model.Quantity[i]; j++)
                     {

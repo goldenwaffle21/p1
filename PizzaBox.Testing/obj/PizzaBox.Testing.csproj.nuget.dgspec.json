@@ -4,6 +4,80 @@
     "/home/elliot/revature/projects/p1/PizzaBox.Testing/PizzaBox.Testing.csproj": {}
   },
   "projects": {
+    "/home/elliot/revature/projects/p1/PizzaBox.Client/PizzaBox.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/elliot/revature/projects/p1/PizzaBox.Client/PizzaBox.Client.csproj",
+        "projectName": "PizzaBox.Client",
+        "projectPath": "/home/elliot/revature/projects/p1/PizzaBox.Client/PizzaBox.Client.csproj",
+        "packagesPath": "/home/elliot/.nuget/packages/",
+        "outputPath": "/home/elliot/revature/projects/p1/PizzaBox.Client/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/elliot/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj": {
+                "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj"
+              },
+              "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj": {
+                "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "microsoft.entityframeworkcore.design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "microsoft.entityframeworkcore.sqlserver": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/home/elliot/revature/projects/p1/PizzaBox.Testing/PizzaBox.Testing.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -12,6 +86,87 @@
         "projectPath": "/home/elliot/revature/projects/p1/PizzaBox.Testing/PizzaBox.Testing.csproj",
         "packagesPath": "/home/elliot/.nuget/packages/",
         "outputPath": "/home/elliot/revature/projects/p1/PizzaBox.Testing/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/elliot/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/elliot/revature/projects/p1/PizzaBox.Client/PizzaBox.Client.csproj": {
+                "projectPath": "/home/elliot/revature/projects/p1/PizzaBox.Client/PizzaBox.Client.csproj"
+              },
+              "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj": {
+                "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.7.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj",
+        "projectName": "PizzaBox.Domain",
+        "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj",
+        "packagesPath": "/home/elliot/.nuget/packages/",
+        "outputPath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/elliot/.nuget/NuGet/NuGet.Config"
@@ -37,6 +192,74 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj",
+        "projectName": "PizzaBox.Storing",
+        "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/PizzaBox.Storing.csproj",
+        "packagesPath": "/home/elliot/.nuget/packages/",
+        "outputPath": "/home/elliot/revature/projects/p1/PizzaWorld.Storing/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/elliot/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj": {
+                "projectPath": "/home/elliot/revature/projects/p1/PizzaWorld.Domain/PizzaBox.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "microsoft.entityframeworkcore.design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "microsoft.entityframeworkcore.sqlserver": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
